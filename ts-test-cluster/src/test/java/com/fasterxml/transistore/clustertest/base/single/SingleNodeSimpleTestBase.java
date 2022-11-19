@@ -1,6 +1,7 @@
 package com.fasterxml.transistore.clustertest.base.single;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.Arrays;
 
 import static org.junit.Assert.assertArrayEquals;
@@ -129,7 +130,7 @@ public abstract class SingleNodeSimpleTestBase extends ClusterTestBase
             // Then add said content
             int origSize = MAX_PAYLOAD_IN_MEMORY + 100;
             final byte[] CONTENT = biggerSomewhatCompressibleData(origSize);
-            File file = File.createTempFile("test", "test-data.txt");
+            File file = Files.createTempFile("test", "test-data.txt").toFile();
             file.deleteOnExit();
             FileOutputStream fout = new FileOutputStream(file);
             fout.write(CONTENT);

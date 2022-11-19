@@ -1,6 +1,7 @@
 package com.fasterxml.transistore.cmd;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.*;
 
 import org.skife.config.TimeSpan;
@@ -133,7 +134,7 @@ public class PutCmd extends TStoreCmdBase
         throws InterruptedException, IOException
     {
         // Let's actually copy stuff from stdin into a temporary file, upload that
-        File tmpFile = File.createTempFile("tstore", ".tmp");
+        File tmpFile = Files.createTempFile("tstore", ".tmp").toFile();
         tmpFile.deleteOnExit();
         byte[] buffer = new byte[4000];
         InputStream in = System.in;
